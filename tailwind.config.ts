@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -52,15 +53,21 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
-				sidebar: {
-					DEFAULT: 'hsl(var(--sidebar-background))',
-					foreground: 'hsl(var(--sidebar-foreground))',
-					primary: 'hsl(var(--sidebar-primary))',
-					'primary-foreground': 'hsl(var(--sidebar-primary-foreground))',
-					accent: 'hsl(var(--sidebar-accent))',
-					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
-					border: 'hsl(var(--sidebar-border))',
-					ring: 'hsl(var(--sidebar-ring))'
+				// Cores neon para interface futurista
+				neon: {
+					blue: '#00f5ff',
+					purple: '#bf00ff',
+					pink: '#ff0080',
+					green: '#00ff41',
+					orange: '#ff8c00',
+					red: '#ff073a',
+					yellow: '#ffff00'
+				},
+				cyber: {
+					dark: '#0a0a0f',
+					darker: '#050507',
+					gray: '#1a1a2e',
+					light: '#16213e'
 				}
 			},
 			borderRadius: {
@@ -69,26 +76,34 @@ export default {
 				sm: 'calc(var(--radius) - 4px)'
 			},
 			keyframes: {
-				'accordion-down': {
-					from: {
-						height: '0'
+				'neon-pulse': {
+					'0%, 100%': {
+						textShadow: '0 0 5px currentColor, 0 0 10px currentColor, 0 0 15px currentColor'
 					},
-					to: {
-						height: 'var(--radix-accordion-content-height)'
+					'50%': {
+						textShadow: '0 0 2px currentColor, 0 0 5px currentColor, 0 0 8px currentColor'
 					}
 				},
-				'accordion-up': {
-					from: {
-						height: 'var(--radix-accordion-content-height)'
+				'glow': {
+					'0%, 100%': {
+						boxShadow: '0 0 5px currentColor, 0 0 10px currentColor'
 					},
-					to: {
-						height: '0'
+					'50%': {
+						boxShadow: '0 0 10px currentColor, 0 0 20px currentColor, 0 0 30px currentColor'
 					}
+				},
+				'fade-in': {
+					'0%': { opacity: '0', transform: 'translateY(10px)' },
+					'100%': { opacity: '1', transform: 'translateY(0)' }
 				}
 			},
 			animation: {
-				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'neon-pulse': 'neon-pulse 2s ease-in-out infinite',
+				'glow': 'glow 2s ease-in-out infinite alternate',
+				'fade-in': 'fade-in 0.5s ease-out'
+			},
+			fontFamily: {
+				'cyber': ['Inter', 'system-ui', 'sans-serif']
 			}
 		}
 	},
